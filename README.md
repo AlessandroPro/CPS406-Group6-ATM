@@ -1,13 +1,13 @@
 # cps406_s4_group6_w16
 CPS 406 - Section 4 - Group 6
-<br>
+<br> <br>
 Project selected: ATM
-\n
-Client - Baheer Kamal
-Team Leader - Alessandro Profenna
-Requirements Engineer - Tolaz Hewa
-Developer - Markus Jeeger
-Developer - Otto Barbalho
-Tester - Mikhail Korchevskiy
+<br> <br>
+Client - Baheer Kamal <br>
+Team Leader - Alessandro Profenna <br>
+Requirements Engineer - Tolaz Hewa <br>
+Developer - Markus Jeeger <br>
+Developer - Otto Barbalho <br>
+Tester - Mikhail Korchevskiy <br>
 
 
