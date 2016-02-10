@@ -1,2 +1,0 @@
-Tolaz: Checkout pg.48 of Lecture 4 draft for Information on what to store.
-Tolaz: Checkout Lecture 6 for greater detail on Use Cases
