@@ -4,7 +4,7 @@
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import sample.layout.MainScreen;
+import screenlayout.MainScreen;
 
 public class ATMManager extends Application {
 

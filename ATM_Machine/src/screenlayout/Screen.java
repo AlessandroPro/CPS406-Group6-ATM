@@ -1,4 +1,4 @@
-package sample.layout;
+package screenlayout;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
