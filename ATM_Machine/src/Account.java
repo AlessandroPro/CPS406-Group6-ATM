@@ -1,8 +1,5 @@
 
-
-
-
-public class Account implements Transaction{         
+public class Account implements Transaction {
 
     private double balance;
     private int IDNum;
@@ -11,43 +8,36 @@ public class Account implements Transaction{
     private Database database;
 
     //Account constructor to initialize the Account ID, Pin, Name, and Balance
-    public Account(int ID, int pin,String uName, double balance){
-
+    public Account(int ID, int pin, String uName, double balance) {
         this.balance = balance;
         this.IDNum = ID;
         this.userName = uName;
         this.pin = pin;
-
     }
 
     //Returns Balance of account
-    public double getBalance()
-    { 
-    	return balance; 
+    public double getBalance() {
+        return balance;
     }
 
     //Deposits amount into account balance
-    public void deposit(double amount) 
-    {
-    //	database.deposit(this, amount); 
+    public void deposit(double amount) {
+        balance += amount;
     }
-    
+
     //Withdraws Amount from account balance
-    public void withdraw(double amount) 
-    { 
-    	//database.withdraw(this,amount); 
-    }
-    
-    //Return account ID number
-    public int getID()
-    { 
-    	return IDNum; 
+    public void withdraw(double amount) {
+        balance -= amount;
     }
 
-	public int getPin() {
-		return pin;
-	}
+    public int getPIN() {
+        return pin;
+    }
 
-  //public String getUserName(){ return userName;}
-  //public String printAcc(){ return "Name: " + userName + "// ID: " + IDNum + "// Balance: " + balance;}
+    public String toString() {
+        return IDNum + "/" + pin + "/" + userName + "/" + String.format("%.2f", balance);
+    }
+    public String getUserName() {
+        return userName;
+    }
 }

@@ -1,82 +1,98 @@
 //package sample;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
-public class Database implements Transaction 
-{
-
-    private Scanner dataScanner;
+public class Database implements Transaction {
     private Account activeAccount;
-    private File file = new File("database.txt");
-	private Scanner scanner = new Scanner(file);
+    private FileWriter os;
+    private File db;
+    private Scanner reader;
+    private int lineNumber;
+    private int attempts;
 
-    public Database() throws FileNotFoundException 
-    {
- 
+
+    public Database(String fn) throws IOException {
+        db = new File("res/" + fn);
+        reader = new Scanner(db);
+        attempts = 0;
     }
 
-
     public void deposit(double amount) {
-    	
-
+        activeAccount.deposit(amount);
+        ATMManager.receipt.deposit(amount);
+        if (!update(activeAccount.toString()))
+            this.activeAccount.withdraw(amount);
     }
 
     public void withdraw(double amount) {
-    	
+        activeAccount.withdraw(amount);
+        ATMManager.receipt.withdraw(amount);
+        if (!update(activeAccount.toString()))
+            this.activeAccount.deposit(amount);
     }
 
-    //////////////////  BACK END (working with actual text file thing) ////////////////
-    /*
-     *  Checks account balance by account ID number
-     *  MOCK FOR NOW
-     */
+    public boolean update(String input) {
+        try {
+            String curr;
+            reader = new Scanner(db);
+            File tempFile = new File(db.getAbsolutePath() + ".tmp");
+            os = new FileWriter(tempFile);
 
-    private boolean verifyAccountNumber(int IDnum)
-    {
-    	String details= "";
-		String [] tokens;
-		
-		while(scanner.hasNext())
-		{
-			details = scanner.nextLine();
-			tokens = details.split("[/]");
-			
-			if(Integer.parseInt(tokens[0]) == IDnum)
-			{
-				activeAccount = new Account(Integer.parseInt(tokens[0]),Integer.parseInt(tokens[1]),tokens[2],Double.parseDouble(tokens[3]));
-				return true;
-			}
-						
-		}
-    	
+            for (int i = 1; reader.hasNext(); i++) {
+                if (i == lineNumber) {
+                    os.write(input + "\n");
+                    reader.nextLine();
+                } else {
+                    curr = reader.nextLine();
+                    os.write(curr + "\n");
+                }
+            }
+            reader.close();
+            os.close();
+
+            if (!db.delete()) {
+                System.out.println("Failed to remove file");
+            }
+
+            if (!tempFile.renameTo(db)) {
+                System.out.println("Failed to rename file");
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error processing file");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean verifyAccountNumber(int IDnum) throws IOException {
+        lineNumber = 0;
+        String details = "";
+        String[] tokens;
+
+        while (reader.hasNext()) {
+            lineNumber++;
+            details = reader.nextLine();
+            tokens = details.split("[/]");
+
+            if (Integer.parseInt(tokens[0]) == IDnum) {
+                activeAccount = new Account(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2], Double.parseDouble(tokens[3]));
+                attempts = 0;
+                return true;
+            }
+        }
         return false;
     }
 
-    private boolean verifyAccoountPIN(int PIN){
-
-        if(activeAccount.getPin() == PIN) return true;
+    public boolean verifyAccoountPIN(int PIN) {
+        attempts++;
+        if (activeAccount.getPIN() == PIN) return true;
         else return false;
     }
 
-    
-    private void update()
-    {
-    
-    	
-    	
+    public int getAttempts() {
+        return attempts;
     }
-    
-    
-    
-    
-    
-    
-    
-    private void writeBalance(Account account, double amount){
-
-
-    }
-
+    public Account getActiveAccount() { return activeAccount; }
 }
