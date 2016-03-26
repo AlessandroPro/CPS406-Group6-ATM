@@ -21,28 +21,6 @@ public class ATMManager extends Application {
         primaryStage.show();
 
         db = new Database("database.txt");
-
-
-        if(db.verifyAccountNumber(28820)) {
-            System.out.println("Account Found!");
-        }
-        else {
-            System.out.println("Account Not Found...");
-            return;
-        }
-
-        if(db.verifyAccoountPIN(4783)) {
-            System.out.println("PIN Correct");
-        }
-        else System.out.println("PIN Not Correct...");
-
-        receipt = new Receipt(db.getActiveAccount().getBalance(), db.getActiveAccount().getUserName());
-
-        db.withdraw(200);
-        db.deposit(3000);
-
-        System.out.println(receipt);
-
     }
 
 
