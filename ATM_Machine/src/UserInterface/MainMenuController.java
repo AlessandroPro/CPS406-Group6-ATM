@@ -40,7 +40,7 @@ public class MainMenuController {
     public void ExitButton() throws IOException {
         System.out.println("Exit Button Pressed!");
         Stage stage = (Stage) lblBalanceAmount.getScene().getWindow();
-        stage.setTitle("Login");
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("LoginScreen.fxml"))));
+        stage.setTitle("Receipt");
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("ReceiptScreen.fxml"))));
     }
 }

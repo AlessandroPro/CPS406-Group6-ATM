@@ -2,14 +2,11 @@ package BackEnd;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
-import java.io.IOException;
 
 public class ATMManager extends Application {
     public static Database db;
@@ -20,11 +17,10 @@ public class ATMManager extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("/UserInterface/MainMenuScreen.fxml"));
+        Parent loginParent = FXMLLoader.load(getClass().getResource("/UserInterface/loginScreen.fxml"));
         Scene loginScreen = new Scene(loginParent);
 
         db = new Database("database.txt");
-        receipt = new Receipt(200,"John Doe");
 
         stage.setOnCloseRequest(event -> {
             Platform.exit();

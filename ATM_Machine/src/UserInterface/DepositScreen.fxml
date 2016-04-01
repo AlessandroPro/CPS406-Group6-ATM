@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.control.*?>
@@ -7,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.DepositController">
    <children>
-      <TextField fx:id="txtDeposit" alignment="CENTER" layoutX="210.0" layoutY="180.0" prefHeight="36.0" prefWidth="181.0" promptText="enter amount" />
+      <TextField fx:id="txtDeposit" alignment="CENTER" layoutX="210.0" layoutY="180.0" onAction="#ProceedButton" prefHeight="36.0" prefWidth="181.0" promptText="enter amount" />
       <Button fx:id="btnProceed" layoutX="217.0" layoutY="238.0" mnemonicParsing="false" onAction="#ProceedButton" prefHeight="52.0" prefWidth="167.0" text="PROCEED" />
       <Label id="lblError" fx:id="lblError" alignment="CENTER" layoutX="217.0" layoutY="283.0" prefHeight="27.0" prefWidth="167.0" textFill="RED">
          <font>

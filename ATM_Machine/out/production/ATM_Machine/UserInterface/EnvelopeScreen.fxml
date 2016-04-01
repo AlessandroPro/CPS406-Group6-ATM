@@ -5,14 +5,14 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.EnvelopeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.DepositController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="121.0" layoutY="114.0" prefHeight="74.0" prefWidth="359.0" text="Please place your cash or cheque into an envelope and insert into the slot" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="btnProceed" layoutX="217.0" layoutY="206.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="167.0" text="PROCEED" />
+      <Button fx:id="btnEProceed" layoutX="217.0" layoutY="206.0" mnemonicParsing="false" onAction="#EProceedButton" prefHeight="52.0" prefWidth="167.0" text="PROCEED" />
       <Label fx:id="lblProcessing" alignment="CENTER" contentDisplay="CENTER" layoutX="224.0" layoutY="274.0" prefHeight="74.0" prefWidth="153.0" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="15.0" />

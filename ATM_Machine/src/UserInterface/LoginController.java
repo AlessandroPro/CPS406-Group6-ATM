@@ -36,7 +36,4 @@ public class LoginController {
         else
             lblError.setText("Account not found!");
     }
-    public void ExitButton(){
-        System.exit(0);
-    }
 }

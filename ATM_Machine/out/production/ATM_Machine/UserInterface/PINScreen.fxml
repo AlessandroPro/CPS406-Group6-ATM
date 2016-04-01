@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.PINController">
    <children>
-      <TextField fx:id="txtInput" alignment="CENTER" layoutX="252.0" layoutY="167.0" prefHeight="27.0" prefWidth="99.0">
+      <TextField fx:id="txtInput" alignment="CENTER" layoutX="252.0" layoutY="167.0" onAction="#ProceedButton" prefHeight="27.0" prefWidth="99.0">
          <font>
             <Font size="22.0" />
          </font></TextField>

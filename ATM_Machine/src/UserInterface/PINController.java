@@ -1,6 +1,7 @@
 package UserInterface;
 
 import BackEnd.ATMManager;
+import BackEnd.Receipt;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -31,14 +32,18 @@ public class PINController {
             Stage stage = (Stage) txtInput.getScene().getWindow();
             stage.setTitle("Main Menu");
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("MainMenuScreen.fxml"))));
+            ATMManager.receipt = new Receipt(ATMManager.db.getActiveAccount().getBalance(), ATMManager.db.getActiveAccount().getUserName());
+
         } else {
-            lblError.setText("Number of Attempts: " + ATMManager.db.getAttempts() + ", " + (3 - ATMManager.db.getAttempts()) + " remaining.");
+            lblError.setText((3 - ATMManager.db.getAttempts()) + " attempts remaining.");
+            txtInput.setText("");
             if (ATMManager.db.doneThreeAttempts()) {
                 Stage stage = (Stage) txtInput.getScene().getWindow();
                 stage.setTitle("Login");
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("LoginScreen.fxml"))));
                 ATMManager.db.setThreeAttempts(false);
                 ATMManager.db.setAttempts(0);
+
             }
         }
     }
