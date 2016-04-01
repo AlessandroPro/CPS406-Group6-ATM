@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.LoginController" />
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.LoginController">
+   <children>
+      <Label alignment="CENTER" layoutX="179.0" layoutY="81.0" prefHeight="43.0" prefWidth="242.0" text="WELCOME" textAlignment="CENTER">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtInput" layoutX="218.0" layoutY="173.0" />
+      <Button fx:id="btnProceed" layoutX="226.0" layoutY="229.0" mnemonicParsing="false" onAction="#ProceedButton" prefHeight="50.0" prefWidth="150.0" text="PROCEED" />
+      <Label alignment="CENTER" layoutX="150.0" layoutY="124.0" prefHeight="43.0" prefWidth="303.0" text="Please enter your account number:" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblError" alignment="CENTER" layoutX="150.0" layoutY="295.0" prefHeight="43.0" prefWidth="303.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnExit" alignment="CENTER" layoutX="483.0" layoutY="344.0" mnemonicParsing="false" onAction="#ExitButton" prefHeight="30.0" prefWidth="81.0" text="EXIT" />
+   </children>
+</AnchorPane>

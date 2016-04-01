@@ -1,7 +1,22 @@
+<?package UserInterface?>
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.DepositController" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.DepositController">
+   <children>
+      <Button fx:id="btnFinish" layoutX="225.0" layoutY="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="FINISH">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="123.0" layoutY="124.0" prefHeight="36.0" prefWidth="355.0" text="Thank you for banking with RBI">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

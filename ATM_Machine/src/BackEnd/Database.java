@@ -1,6 +1,8 @@
 package BackEnd;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Database implements Transaction {
@@ -10,11 +12,16 @@ public class Database implements Transaction {
     private Scanner reader;
     private int lineNumber;
     private int attempts;
+    private boolean threeAttempts;
 
 
     public Database(String fn) throws IOException {
         db = new File("res/" + fn);
-        reader = new Scanner(db);
+        if(db.exists()){
+            reader = new Scanner(db);
+            System.out.println("Database was found");
+        }
+        else System.out.println("Database could not be found");
         attempts = 0;
     }
 
@@ -67,7 +74,8 @@ public class Database implements Transaction {
         return true;
     }
 
-    public boolean verifyAccountNumber(int IDnum) throws IOException {
+    public boolean verifyAccountNumber(int IDNum) throws IOException {
+        reader = new Scanner(db);
         lineNumber = 0;
         String details = "";
         String[] tokens;
@@ -77,7 +85,7 @@ public class Database implements Transaction {
             details = reader.nextLine();
             tokens = details.split("[/]");
 
-            if (Integer.parseInt(tokens[0]) == IDnum) {
+            if (Integer.parseInt(tokens[0]) == IDNum) {
                 activeAccount = new Account(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2], Double.parseDouble(tokens[3]));
                 attempts = 0;
                 return true;
@@ -92,11 +100,18 @@ public class Database implements Transaction {
             attempts = 0;
             return true;
         }
-        else return false;
+        else {
+            if(attempts == 3)
+                setThreeAttempts(true);
+            return false;
+        }
     }
 
     public int getAttempts() {
         return attempts;
     }
     public Account getActiveAccount() { return activeAccount; }
+    public boolean doneThreeAttempts() { return threeAttempts; }
+    public void setAttempts(int attempts){ this.attempts = attempts; }
+    public void setThreeAttempts(boolean threeAttempts) { this.threeAttempts = threeAttempts; }
 }

@@ -1,13 +1,18 @@
 package BackEnd;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
+import java.io.IOException;
 
 public class ATMManager extends Application {
-    private static Database db;
+    public static Database db;
     public static Receipt receipt;
     public static void main(String[] args) {
         launch(args);
@@ -15,13 +20,18 @@ public class ATMManager extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent DATParent = FXMLLoader.load(getClass().getResource("/UserInterface/LoginScreen.fxml"));
-        Scene DATScreen = new Scene(DATParent);
-
-        stage.setTitle("DAT");
-        stage.setScene(DATScreen);
-        stage.show();
+        Parent loginParent = FXMLLoader.load(getClass().getResource("/UserInterface/MainMenuScreen.fxml"));
+        Scene loginScreen = new Scene(loginParent);
 
         db = new Database("database.txt");
+        receipt = new Receipt(200,"John Doe");
+
+        stage.setOnCloseRequest(event -> {
+            Platform.exit();
+            System.exit(0);
+        });
+        stage.setTitle("Login");
+        stage.setScene(loginScreen);
+        stage.show();
     }
 }

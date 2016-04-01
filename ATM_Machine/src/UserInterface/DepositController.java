@@ -1,5 +1,6 @@
 package UserInterface;
 
+import BackEnd.ATMManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,29 +20,27 @@ public class DepositController {
 
     @FXML
     private void BackButton() throws IOException {
-        System.out.println("Back Button Pressed!");
         Stage stage = (Stage) txtDeposit.getScene().getWindow();
+        stage.setTitle("Main Menu");
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("MainMenuScreen.fxml"))));
     }
 
     @FXML
-    private void ProceedButton() {
-        int amount;
-        System.out.println("Proceed Button Pressed!");
+    private void ProceedButton() throws IOException {
         try {
+            int amount;
             amount = Integer.parseInt(txtDeposit.getText());
             lblError.setText("");
-        } catch (NumberFormatException e){
+            ATMManager.db.deposit(amount);
+
+
+        } catch (NumberFormatException e) {
             lblError.setText("invalid entry");
             System.out.println("Invalid Input");
+            return;
         }
-
-    }
-
-    @FXML
-    private void ExitButton() throws IOException {
-        System.out.println("Exit Button Pressed!");
         Stage stage = (Stage) txtDeposit.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("DATScreen.fxml"))));
+        stage.setTitle("Envelope");
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("EnvelopeScreen.fxml"))));
     }
 }
