@@ -3,13 +3,12 @@ package BackEnd;
 public class Account implements Transaction {
 
     private double balance;
-    private int IDNum;
-    private int pin;
+    private String IDNum;
+    private String pin;
     private String userName;
-    private Database database;
 
     //Account constructor to initialize the Account ID, Pin, Name, and Balance
-    public Account(int ID, int pin, String uName, double balance) {
+    public Account(String ID, String pin, String uName, double balance) {
         this.balance = balance;
         this.IDNum = ID;
         this.userName = uName;
@@ -22,16 +21,18 @@ public class Account implements Transaction {
     }
 
     //Deposits amount into account balance
-    public void deposit(double amount) {
-        balance += amount;
-    }
+    public void deposit(double amount) { balance += amount; }
 
     //Withdraws Amount from account balance
-    public void withdraw(double amount) {
-        balance -= amount;
+    public boolean withdraw(double amount) {
+        if(amount < balance) {
+            balance -= amount;
+            return true;
+        }
+        return false;
     }
 
-    public int getPIN() {
+    public String getPIN() {
         return pin;
     }
 

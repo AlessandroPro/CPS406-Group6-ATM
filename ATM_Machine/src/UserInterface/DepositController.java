@@ -49,7 +49,6 @@ public class DepositController {
 
     @FXML
     private void EProceedButton() throws IOException {
-        System.out.println("Deposit Amount = " + amount + ", " + "Balance = " + ATMManager.db.getActiveAccount().getBalance());
         ATMManager.db.deposit(amount);
         Stage stage = (Stage) btnEProceed.getScene().getWindow();
         stage.setTitle("Envelope");

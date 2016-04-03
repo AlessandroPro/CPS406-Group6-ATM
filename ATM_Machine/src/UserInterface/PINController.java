@@ -4,14 +4,17 @@ import BackEnd.ATMManager;
 import BackEnd.Receipt;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class PINController {
+public class PINController implements Initializable {
 
     @FXML
     private Label lblError;
@@ -20,15 +23,12 @@ public class PINController {
     private TextField txtInput;
 
     public void ProceedButton() throws IOException {
-        int pin;
-        try {
-            pin = Integer.parseInt(txtInput.getText());
-        } catch (NumberFormatException e) {
-            lblError.setText("Invalid Input");
+        String pin = txtInput.getText();
+        if(pin.length() != 4){
+            lblError.setText("invalid input");
             return;
         }
-
-        if (ATMManager.db.verifyAccoountPIN(pin)) {
+        if (ATMManager.db.verifyAccountPIN(pin)) {
             Stage stage = (Stage) txtInput.getScene().getWindow();
             stage.setTitle("Main Menu");
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("MainMenuScreen.fxml"))));
@@ -43,8 +43,15 @@ public class PINController {
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("LoginScreen.fxml"))));
                 ATMManager.db.setThreeAttempts(false);
                 ATMManager.db.setAttempts(0);
-
             }
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        txtInput.lengthProperty().addListener((observable, oldValue, newValue) -> {
+            if (txtInput.getText().length() > 4)
+                txtInput.setText(txtInput.getText().substring(0, 4));
+        });
     }
 }

@@ -41,10 +41,11 @@ public class Receipt {
     }
 
     //Method to subtracted amount withdrawn and updated balance of account into ArrayList
-    public void withdraw(double amount) {
+    public boolean withdraw(double amount) {
         DateFormat dateFormat = new SimpleDateFormat("h:mm a");
         balance -= amount;
         transactions.add("Withdrawal \t\t" + amount + "\t\t\t" + dateFormat.format(date) + "\t\t\t" + balance);
+        return true;
     }
 
     //Receipt toString to print all transactions

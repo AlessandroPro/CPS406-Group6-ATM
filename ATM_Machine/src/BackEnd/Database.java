@@ -32,12 +32,14 @@ public class Database implements Transaction {
             this.activeAccount.withdraw(amount);
     }
 
-    public void withdraw(double amount) {
-        activeAccount.withdraw(amount);
-        ATMManager.receipt.withdraw(amount);
-        if (!update(activeAccount.toString()))
-            this.activeAccount.deposit(amount);
-
+    public boolean withdraw(double amount) {
+        if(activeAccount.withdraw(amount)) {
+            ATMManager.receipt.withdraw(amount);
+            if (!update(activeAccount.toString()))
+                this.activeAccount.deposit(amount);
+            return true;
+        }
+        return false;
     }
 
     public boolean update(String input) {
@@ -74,7 +76,7 @@ public class Database implements Transaction {
         return true;
     }
 
-    public boolean verifyAccountNumber(int IDNum) throws IOException {
+    public boolean verifyAccountNumber(String IDNum) throws IOException {
         reader = new Scanner(db);
         lineNumber = 0;
         String details = "";
@@ -84,9 +86,8 @@ public class Database implements Transaction {
             lineNumber++;
             details = reader.nextLine();
             tokens = details.split("[/]");
-
-            if (Integer.parseInt(tokens[0]) == IDNum) {
-                activeAccount = new Account(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2], Double.parseDouble(tokens[3]));
+            if (tokens[0].equals(IDNum)) {
+                activeAccount = new Account(tokens[0], tokens[1], tokens[2], Double.parseDouble(tokens[3]));
                 attempts = 0;
                 return true;
             }
@@ -94,9 +95,9 @@ public class Database implements Transaction {
         return false;
     }
 
-    public boolean verifyAccoountPIN(int PIN) {
+    public boolean verifyAccountPIN(String PIN) {
         attempts++;
-        if (activeAccount.getPIN() == PIN) {
+        if (activeAccount.getPIN().equals(PIN)) {
             attempts = 0;
             return true;
         }
@@ -105,6 +106,12 @@ public class Database implements Transaction {
                 setThreeAttempts(true);
             return false;
         }
+    }
+
+    public static boolean isNumeric(String str) {
+        for (char c : str.toCharArray())
+            if (!Character.isDigit(c)) return false;
+        return true;
     }
 
     public int getAttempts() {
