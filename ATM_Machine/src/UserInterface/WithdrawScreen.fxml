@@ -14,8 +14,7 @@
       <Button fx:id="btn200" layoutX="415.0" layoutY="320.0" mnemonicParsing="false" onAction="#Direct200" prefHeight="50.0" prefWidth="150.0" text="200" />
       <Button fx:id="btn80" layoutX="415.0" layoutY="176.0" mnemonicParsing="false" onAction="#Direct80" prefHeight="50.0" prefWidth="150.0" text="80" />
       <Button fx:id="btn20" layoutX="35.0" layoutY="175.0" mnemonicParsing="false" onAction="#Direct20" prefHeight="50.0" prefWidth="150.0" text="20" />
-      <TextField fx:id="txtInput" layoutX="217.0" layoutY="176.0" onAction="#ProceedButton" />
-      <Label id="lblError" fx:id="btnProceed" layoutX="250.0" layoutY="282.0" prefHeight="17.0" prefWidth="100.0" />
+      <TextField fx:id="txtInput" alignment="BASELINE_CENTER" layoutX="217.0" layoutY="176.0" onAction="#ProceedButton" />
       <Label layoutX="179.0" layoutY="111.0" prefHeight="36.0" prefWidth="242.0" text="Please Enter Amount to Withdraw">
          <font>
             <Font size="15.0" />

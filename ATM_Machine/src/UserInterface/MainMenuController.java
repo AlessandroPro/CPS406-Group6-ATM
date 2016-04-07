@@ -9,36 +9,47 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/*
+ * MainMenuController controls all functionality on Main Menu Screen
+ */
 public class MainMenuController {
     @FXML
     private Label lblBalanceAmount;
 
 
+    /*
+     * Directs to the deposit screen
+     */
     @FXML
     public void DepositButton() throws IOException {
-        System.out.println("Deposit Button Pressed!");
         Stage stage = (Stage) lblBalanceAmount.getScene().getWindow();
         stage.setTitle("Deposit");
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("DepositScreen.fxml"))));
     }
 
+    /*
+     * Directs to the withdraw screen
+     */
     @FXML
     public void WithdrawButton() throws IOException {
-        System.out.println("Withdraw Button Pressed!");
         Stage stage = (Stage) lblBalanceAmount.getScene().getWindow();
         stage.setTitle("Withdraw");
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("WithdrawScreen.fxml"))));
     }
 
+    /*
+     * Views balance
+     */
     @FXML
     public void ViewBalanceButton() throws IOException {
-        System.out.println("View Balance Button Pressed!");
         lblBalanceAmount.setText(Double.toString(ATMManager.db.getActiveAccount().getBalance()));
     }
 
+    /*
+     * Logs user out and goes back to login screen
+     */
     @FXML
     public void ExitButton() throws IOException {
-        System.out.println("Exit Button Pressed!");
         Stage stage = (Stage) lblBalanceAmount.getScene().getWindow();
         stage.setTitle("Receipt");
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("ReceiptScreen.fxml"))));

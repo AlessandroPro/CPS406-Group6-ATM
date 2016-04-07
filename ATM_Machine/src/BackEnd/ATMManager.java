@@ -7,17 +7,25 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
+/*
+ * ATMManager class is the starting point for the applicaiton
+ */
 public class ATMManager extends Application {
     public static Database db;
     public static Receipt receipt;
+    /*
+     * main method to launch the application
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /*
+     * This is the point at which all the functions are called
+     */
     @Override
     public void start(Stage stage) throws Exception {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("/UserInterface/loginScreen.fxml"));
+        Parent loginParent = FXMLLoader.load(getClass().getResource("/UserInterface/LoginScreen.fxml"));
         Scene loginScreen = new Scene(loginParent);
 
         db = new Database("database.txt");

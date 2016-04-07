@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/*
+ * LoginController controls the login screen functionality
+ */
 public class LoginController implements Initializable{
 
     @FXML
@@ -22,6 +25,10 @@ public class LoginController implements Initializable{
     @FXML
     private Label lblError;
 
+    /*
+     * functionality: when proceed button is pressed, it checks if the account number is valid. if it is continue to
+      * PIN screen, else notify user
+     */
     public void ProceedButton() throws IOException {
         String input = txtInput.getText();
         if(input.length() != 16) {
@@ -43,6 +50,9 @@ public class LoginController implements Initializable{
             txtInput.setText("");
         }
     }
+    /*
+     * Restricts the input to 16 characters
+     */
     public void initialize(URL location, ResourceBundle resources) {
         txtInput.lengthProperty().addListener((observable, oldValue, newValue) -> {
             if (txtInput.getText().length() > 16)

@@ -7,11 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/*
+ * ReceiptController control the receipt screen.
+ */
 public class ReceiptController {
     @FXML
     TextArea txtAreaTransactions;
@@ -26,13 +28,19 @@ public class ReceiptController {
     @FXML
     Button btnDone;
 
+    /*
+     * When NO button is pressed, it does not print receipt
+     */
     @FXML
     public void NoButton() throws IOException {
         Stage stage = (Stage) btnYes.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("LoginScreen.fxml"))));
-        stage.setTitle("Login");
+        stage.setTitle("Exit");
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("ExitScreen.fxml"))));
     }
 
+    /*
+     * When YES button is pressed, it does not print receipt
+     */
     @FXML
     public void YesButton(){
         btnYes.setVisible(false);
@@ -44,10 +52,14 @@ public class ReceiptController {
         txtAreaTransactions.setText(ATMManager.receipt.toString());
     }
 
+    /*
+     * Proceeds back to login screen
+     */
     @FXML
     public void DoneButton() throws IOException {
         Stage stage = (Stage) btnYes.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("LoginScreen.fxml"))));
-        stage.setTitle("Login");
+        stage.setTitle("Exit");
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("ExitScreen.fxml"))));
+
     }
 }
