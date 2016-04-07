@@ -8,8 +8,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +25,8 @@ public class LoginController implements Initializable{
     @FXML
     private TextField txtInput;
 
+    @FXML
+    private ImageView imgRam;
     @FXML
     private Label lblError;
 

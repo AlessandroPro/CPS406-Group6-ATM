@@ -21,7 +21,8 @@ public class Database implements Transaction {
     * Constructor that attempts to open a file passed on by fn in res folder
     */
     public Database(String fn) throws IOException {
-        db = new File("res/" + fn);
+        db = new File(fn);
+        System.out.println(db.getAbsoluteFile());
         if(db.exists()){
             reader = new Scanner(db);
         }
@@ -61,7 +62,6 @@ public class Database implements Transaction {
             reader = new Scanner(db);
             File tempFile = new File(db.getAbsolutePath() + ".tmp");
             os = new FileWriter(tempFile);
-
             for (int i = 1; reader.hasNext(); i++) {
                 if (i == lineNumber) {
                     os.write(input + "\n");
@@ -73,15 +73,12 @@ public class Database implements Transaction {
             }
             reader.close();
             os.close();
-
             if (!db.delete()) {
                 System.out.println("Failed to remove file");
             }
-
             if (!tempFile.renameTo(db)) {
                 System.out.println("Failed to rename file");
             }
-
         } catch (IOException e) {
             System.out.println("Error processing file");
             return false;

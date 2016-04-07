@@ -28,7 +28,7 @@ public class Receipt {
         transactions.add("------------------------------------------------------------------------------");
         transactions.add(receiptDate);
         transactions.add("ATM accessed by: " + userName);
-        transactions.add("Initial balance: " + balance + "\n");
+        transactions.add("Initial balance: $" + String.format("%.2f", balance) + "\n");
         transactions.add("Method\t\t\tAmount\t\t\tTime\t\t\tBalance\n");
     }
 
@@ -38,7 +38,7 @@ public class Receipt {
     public void deposit(double amount) {
         DateFormat dateFormat = new SimpleDateFormat("h:mm a");
         balance += amount;
-        transactions.add("Deposit \t\t\t" + amount + "\t\t\t" + dateFormat.format(date) + "\t\t\t" + balance);
+        transactions.add("Deposit \t\t\t$" + String.format("%.2f", amount) + "\t\t\t" + dateFormat.format(date) + "\t\t\t$" + String.format("%.2f", balance));
     }
 
     /*
@@ -47,7 +47,7 @@ public class Receipt {
     public boolean withdraw(double amount) {
         DateFormat dateFormat = new SimpleDateFormat("h:mm a");
         balance -= amount;
-        transactions.add("Withdrawal \t\t" + amount + "\t\t\t" + dateFormat.format(date) + "\t\t\t" + balance);
+        transactions.add("Withdrawal \t\t$" + String.format("%.2f", amount) + "\t\t\t" + dateFormat.format(date) + "\t\t\t$" + String.format("%.2f", balance));
         return true;
     }
 

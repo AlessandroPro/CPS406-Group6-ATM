@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -11,7 +14,10 @@
          <font>
             <Font size="22.0" />
          </font></TextField>
-      <Button fx:id="btnProceed" layoutX="226.0" layoutY="229.0" mnemonicParsing="false" onAction="#ProceedButton" prefHeight="50.0" prefWidth="150.0" text="PROCEED" />
+      <Button fx:id="btnProceed" layoutX="226.0" layoutY="229.0" mnemonicParsing="false" onAction="#ProceedButton" prefHeight="50.0" prefWidth="150.0" text="PROCEED">
+         <effect>
+            <InnerShadow color="#05467c" />
+         </effect></Button>
       <Label alignment="CENTER" layoutX="150.0" layoutY="124.0" prefHeight="43.0" prefWidth="303.0" text="Please enter your PIN number:" textAlignment="CENTER">
          <font>
             <Font size="15.0" />
@@ -22,5 +28,27 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <Rectangle fill="#d3b94d" height="7.0" layoutY="42.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="600.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Rectangle fill="#05467c" height="45.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
+      <Label layoutX="339.0" layoutY="4.0" prefHeight="17.0" prefWidth="223.0" text="Rams Bank International" textFill="WHITE">
+         <font>
+            <Font name="Bangla MN" size="16.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <ImageView fitHeight="38.0" fitWidth="44.0" layoutX="542.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@RamsBankLogo.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
    </children>
 </AnchorPane>

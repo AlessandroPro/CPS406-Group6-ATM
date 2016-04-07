@@ -42,7 +42,7 @@ public class MainMenuController {
      */
     @FXML
     public void ViewBalanceButton() throws IOException {
-        lblBalanceAmount.setText(Double.toString(ATMManager.db.getActiveAccount().getBalance()));
+        lblBalanceAmount.setText("$" + String.format("%.2f", ATMManager.db.getActiveAccount().getBalance()));
     }
 
     /*

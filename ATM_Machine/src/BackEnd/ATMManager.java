@@ -19,7 +19,6 @@ public class ATMManager extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
     /*
      * This is the point at which all the functions are called
      */
@@ -27,9 +26,8 @@ public class ATMManager extends Application {
     public void start(Stage stage) throws Exception {
         Parent loginParent = FXMLLoader.load(getClass().getResource("/UserInterface/LoginScreen.fxml"));
         Scene loginScreen = new Scene(loginParent);
-
+        stage.setResizable(false);
         db = new Database("database.txt");
-
         stage.setOnCloseRequest(event -> {
             Platform.exit();
             System.exit(0);
