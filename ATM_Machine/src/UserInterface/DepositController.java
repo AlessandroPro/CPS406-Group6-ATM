@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 /*
  * DepositController controls what happens on the Deposit Screen and Envelope Screen
  */
-public class DepositController {
+public class DepositController implements Initializable {
 
     @FXML
     private TextField txtDeposit;
@@ -29,7 +29,7 @@ public class DepositController {
     @FXML
     private Label lblError;
 
-    private static int amount;
+    private static double amount;
 
     /*
      * Functionality: when back button is pressed, the user is returned to the Main Menu screen
@@ -47,10 +47,14 @@ public class DepositController {
     @FXML
     private void ProceedButton() throws IOException {
         try {
-            this.amount = Integer.parseInt(txtDeposit.getText());
+            this.amount = Double.parseDouble(txtDeposit.getText());
             lblError.setText("");
         } catch (NumberFormatException e) {
             lblError.setText("invalid entry");
+            return;
+        }
+        if(amount < 1 || amount >= 1000){
+            lblError.setText("invalid amount");
             return;
         }
         Stage stage = (Stage) lblError.getScene().getWindow();
@@ -68,5 +72,10 @@ public class DepositController {
         stage.setTitle("Envelope");
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("DATScreen.fxml"))));
         this.amount = 0;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }

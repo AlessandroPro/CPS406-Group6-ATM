@@ -62,7 +62,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lblError" alignment="CENTER" layoutX="226.0" layoutY="198.0" prefHeight="17.0" prefWidth="150.0" textFill="RED" />
+      <Label fx:id="lblError" alignment="CENTER" layoutX="226.0" layoutY="203.0" prefHeight="17.0" prefWidth="150.0" textFill="RED" />
       <Button fx:id="btnBack" alignment="CENTER" layoutX="261.0" layoutY="315.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="30.0" prefWidth="81.0" text="BACK">
          <effect>
             <InnerShadow color="#05467c" />
@@ -89,5 +89,6 @@
             <DropShadow />
          </effect>
       </ImageView>
+      <Label layoutX="255.0" layoutY="124.0" text="(Multiples of 20)" />
    </children>
 </AnchorPane>

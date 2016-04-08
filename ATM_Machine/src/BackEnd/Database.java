@@ -21,8 +21,7 @@ public class Database implements Transaction {
     * Constructor that attempts to open a file passed on by fn in res folder
     */
     public Database(String fn) throws IOException {
-        db = new File(fn);
-        System.out.println(db.getAbsoluteFile());
+        db = new File("src/BackEnd/" + fn);
         if(db.exists()){
             reader = new Scanner(db);
         }
@@ -130,7 +129,7 @@ public class Database implements Transaction {
      */
     public static boolean isNumeric(String str) {
         for (char c : str.toCharArray())
-            if (!Character.isDigit(c)) return false;
+            if (c < '0' || c > '9') return false;
         return true;
     }
 
