@@ -21,7 +21,7 @@ public class Database implements Transaction {
     * Constructor that attempts to open a file passed on by fn in res folder
     */
     public Database(String fn) throws IOException {
-        db = new File("src/BackEnd/" + fn);
+        db = new File(fn);
         if(db.exists()){
             reader = new Scanner(db);
         }

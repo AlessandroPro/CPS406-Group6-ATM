@@ -41,13 +41,14 @@ public class WithdrawController implements Initializable{
         try {
             double amount = Double.parseDouble(txtInput.getText());
 
-            if(amount % 20 != 0){
-                lblError.setText("not a multiple of 20");
+            if(amount < 20){
+                lblError.setText("invalid amount");
                 txtInput.setText("");
                 return;
             }
-            else if(amount < 20){
-                lblError.setText("invalid amount");
+
+            else if(amount % 20 != 0){
+                lblError.setText("not a multiple of 20");
                 txtInput.setText("");
                 return;
             }

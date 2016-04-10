@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,11 +19,12 @@ import java.util.ResourceBundle;
 /*
  * DepositController controls what happens on the Deposit Screen and Envelope Screen
  */
-public class DepositController implements Initializable {
+public class DepositController {
 
     @FXML
     private TextField txtDeposit;
 
+    private PasswordField pf;
     @FXML
     private Button btnEProceed;
 
@@ -72,10 +74,5 @@ public class DepositController implements Initializable {
         stage.setTitle("Envelope");
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("DATScreen.fxml"))));
         this.amount = 0;
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 }
